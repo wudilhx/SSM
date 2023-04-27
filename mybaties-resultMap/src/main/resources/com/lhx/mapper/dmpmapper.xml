@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhx.mapper.dmpmapper">
+<resultMap id="dmpids" type="dmp">
+    <id column="dept_id" property="depid"></id>
+    <result column="dept_name" property="depname"></result>
+</resultMap>
+<select id="getdmpidtwo" resultMap="dmpids">
+    select * from dept where dept_id=#{id};
+</select>
+<!-- //查询部门的员工  部门
+    dmp getdmpid(@Param("id") Integer id);
+    ofType:集合存储的类型
+    <collection property="emps" ofType="emp">1 自己的属性 2 对应的类
+    -->
+    <resultMap id="getdmpidmap" type="dmp">
+        <id column="dept_id" property="depid"></id>
+        <result column="dept_name" property="depname"></result>
+        <collection property="emps" ofType="emp">
+            <id property="empid" column="emp_id"></id>
+            <result property="empname" column="emp_name"></result>
+            <result property="age" column="age"></result>
+            <result property="gender" column="gender"></result>
+        </collection>
+    </resultMap>
+    <select id="getdmpid" resultMap="getdmpidmap">
+        select distinct* from dept
+    left join emp on dept.dept_id=emp.dept_id
+     where dept.dept_id=#{id};
+    </select>
+</mapper>

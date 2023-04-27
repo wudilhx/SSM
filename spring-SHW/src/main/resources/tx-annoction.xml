@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!--   项目 事务-->
+    <!--   引入jdbc配置文件classpath:为类路径-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+    <bean id="dataSore" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="driverClassName" value="${jdbc.duver}"></property>
+        <property name="username" value="${jdbc.name}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <bean class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--       数据源管理连接-->
+        <property name="dataSource" ref="dataSore"></property>
+    </bean>
+<!--    扫描-->
+    <context:component-scan base-package="com.lhx.springSh"></context:component-scan>
+<!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<!--       连接数据源-->
+        <property name="dataSource" ref="dataSore"></property>
+    </bean>
+<!--  开启事务的注解驱动 tx -->
+<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

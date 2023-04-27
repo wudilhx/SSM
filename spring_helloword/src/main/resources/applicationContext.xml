@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+<!--benan:配置一个bean对象，将对象交给Ioc容器管理
+    属性：
+    id：bean的唯一标识，不能重复
+    class：设置bean对象所对应的类型
+    -->
+    <bean id="helloword" class="com.lhx.spring.pojo.Hellowword">
+</bean>
+<!--   1 通过set方法赋值
+ <value><![CDATA[1]]></value>特殊字符放这里
+ 赋值为空
+ <value>null</value>
+-->
+    <bean id="studentone" class="com.lhx.spring.pojo.student">
+        <property name="id" value="1">
+        </property>
+        <property name="name" value="懒羊羊"></property>
+        <property name="happy" >
+            <value><![CDATA[<睡觉>]]></value>
+        </property>
+    </bean>
+<!--   2 通过构造器来赋值-->
+    <bean id="studenttwo" class="com.lhx.spring.pojo.student">
+        <constructor-arg value="2"></constructor-arg>
+        <constructor-arg value="喜羊羊"></constructor-arg>
+        <constructor-arg value="play"></constructor-arg>
+    </bean>
+<!--   3 依赖注入类的类型
+    1 ref
+    2 在<property name="ban"></property>里面配置bean标签
+    数组类型:用array标签 里面放value标签是普通类型
+            ref bean里面放类类型
+
+-->
+    <bean id="studentthree" class="com.lhx.spring.pojo.student">
+        <property name="id" value="1">
+        </property>
+        <property name="name" value="懒羊羊"></property>
+        <property name="happy" value="睡觉" >
+        </property>
+        <property name="ban" ref="banjione"></property>
+<!--        数组-->
+        <property name="aa">
+         <array>
+             <value>1</value>
+             <value>2</value>
+             <value>3</value>
+         </array>
+        </property>
+    </bean>
+    <bean id="banjione" class="com.lhx.spring.pojo.banji">
+        <property name="id" value="1"></property>
+        <property name="name" value="冲击班"></property>
+    </bean>
+<!--  4  集合类型                5 Map类型
+     1:直接配置                    <map>
+     2：ref标签 使用一个util约束     <entry key:自定义 refvalue：（提前设置bean）放id>
+                                  <map>
+
+-->
+    <bean id="banjitwo" class="com.lhx.spring.pojo.banji">
+        <property name="id" value="1"></property>
+        <property name="name" value="超越班"></property>
+        <property name="list" ref="studentlist" >
+<!--            <list>-->
+<!--                <ref bean="studentone"></ref>-->
+<!--                <ref bean="studenttwo"></ref>-->
+<!--                <ref bean="studentthree"></ref>-->
+<!--            </list>-->
+        </property>
+    </bean>
+<!--    第二种方式配约束-->
+<!--    配置一个集合类型bean，需要使用util约束-->
+    <util:list id="studentlist">
+        <ref bean="studenttwo"></ref>
+        <ref bean="studentone"></ref>
+        <ref bean="studentthree"></ref>
+    </util:list>
+<!--   6 p命名方式-->
+    <bean id="studentfive" class="com.lhx.spring.pojo.student"
+    p:name="小明" p:ban-ref="banjione"></bean>
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- autowire="butype"根据类型自动装配-->
+<!--  byname   属性名与bean的id相同才匹配（自动装配）-->
+<!--scope="prototype" 多例-->
+
+    <bean class="com.lhx.spring.web.userweb" autowire="byType">
+<!--     <property name="user" ref="userserviceimplone" ></property>-->
+ </bean>
+    <bean id="userserviceimplone" class="com.lhx.spring.service.impl.userserviceimpl" autowire="byType">
+<!--        <property name="ss" ref="userdaoimplone"></property>-->
+    </bean>
+    <bean id="userdaoimplone" class="com.lhx.spring.dao.imel.userdaoimpl"></bean>
+</beans>

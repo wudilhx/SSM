@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    引用jdbc。properties文件可以在文件中使用￥{key}-->
+    <properties resource="jdbc.properties"></properties>
+    <!--    type 设置起别名的类型 默认别名为student-->
+    <typeAliases>
+        <!--        <typeAlias type="com.student.pojo.student"></typeAlias>-->
+        <!--       设置包下的所有类型的类都为别名类名-->
+        <package name="com.lhx.mybatis.pojo"/>
+    </typeAliases>
+<!--    配置分页插件-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+    <!--    配置连接数据库-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.duver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.name}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--    引入mybatis的映射文件-->
+    <mappers>
+        <!--        <mapper resource="mapper/UserMapper.xml"/>-->
+        <!--        mapper接口和映射文件所在的包必须一致
+            mapper接口的名字和映射文件的名字必须一致-->
+        <package name="com.lhx.mybatis.mapper"/>
+    </mappers>
+</configuration>

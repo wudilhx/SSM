@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/text/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/text/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/untitled/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybaties-resultMap/untitled/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis_dynamicSQL/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis_dynamicSQL/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis_mbg/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis_mbg/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-SHW/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-SHW/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aod/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-aod/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvc-helloword/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvc-helloword/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvv-ajax/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-mvv-ajax/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-proxy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-proxy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring_helloword/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring_helloword/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ssm/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

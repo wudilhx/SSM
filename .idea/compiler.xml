@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-proxy" />
+        <module name="spring-mvc" />
+        <module name="spring-mvc-helloword" />
+        <module name="mybatis" />
+        <module name="spring-mvv-ajax" />
+        <module name="mybatis_mbg" />
+        <module name="spring-SHW" />
+        <module name="ssm" />
+        <module name="mybatis_dynamicSQL" />
+        <module name="spring_helloword" />
+        <module name="spring-aod" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybatis02" target="1.8" />
+      <module name="text" target="1.8" />
+      <module name="untitled" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

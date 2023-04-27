@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhx.mapper.Empmapper">
+<insert id="add">
+  insert into emp values (null,#{name},#{age},#{gender},null);
+</insert>
+
+<select id="select" resultMap="selectidm">
+  select * from emp;
+</select>
+
+<!--emp selectid(@Param("id") Integer id);
+ 通过无参构造获取到 多对一
+      resultMap id： 设置的别名
+      type：处理关系的实体类的类型
+      标签：
+      id：处理主键与实体类的关系
+      result：普通字段
+      column： sql字段
+      property：实体类属性
+-->
+  <resultMap id="selectidm" type="emp">
+    <id column="emp_id" property="empid"></id>
+    <result column="emp_name" property="empname"></result>
+  </resultMap>
+<resultMap id="selectidmap" type="emp">
+  <id column="emp_id" property="empid"></id>
+  <result column="emp_name" property="empname"></result>
+  <result column="dept_id" property="dmp.depid"></result>
+  <result column="dept_name" property="dmp.depname"></result>
+</resultMap>
+  <select id="selectid" resultMap="selectidmap">
+    select distinct* from emp
+    left join dept on emp.dept_id=dept.dept_id where emp_id=#{id};
+  </select>
+
+<!-- //分布查询
+    //查询员工以及部门信息
+    emp getempselectidsone(@Param("id") Integer id);
+    column:分布查询的参数
+    select：查询的唯一条件
+    property：需要处理映射关系的属性名
+    javaType：为属性类型
+    fetchType：设置延迟加载  eager立即加载 lazy为延迟加载
+    association：多对一的映射关系（处理实体类中的属性问题）
+    -->
+  <resultMap id="getempselectidsonemap" type="emp">
+    <id column="emp_id" property="empid"></id>
+    <result column="emp_name" property="empname"></result>
+    <association property="dmp"
+                 fetchType="eager"
+                 select="com.lhx.mapper.dmpmapper.getdmpidtwo"
+                 column="dept_id">
+    </association>
+  </resultMap>
+<!--  -->
+  <select id="getempselectidsone" resultMap="getempselectidsonemap">
+    select * from emp where emp_id=#{id};
+  </select>
+</mapper>

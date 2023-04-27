@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aa">
+<input type="button" value="测试ajax请求" id="cc" @click="it">
+<input type="button" value="测试ajaxJSON请求"  @click="jso">
+<input type="button" value="测试ajaxJSON请求返回值"  @click="xiang">
+<input type="button" value="测试ajaxJSON请求返回值Map"  @click="map">
+    <a th:href="@{/hello}">spring</a><br>
+    <a th:href="@{/test/down}">spring</a><br>
+    <form th:action="@{/test/up}" method="post" enctype="multipart/form-data">
+        头像：<input type="file" name="photo"><br>
+        <input type="submit" value="上传">
+    </form>
+    <h>{{it}}</h><br>
+    <p>{{he}}</p>
+    <a th:href="@{/errors}">error</a>
+</div>
+<script type="text/javascript" src="/spring_mvv/static/js/vue.js"></script>
+<script type="text/javascript" th:src="@{static/js/axios.min.js}"></script>
+<script>
+    var vue=new Vue({
+        el:"#aa",
+        data:{
+            it:" ",
+            he:" "
+        },
+        methods:{
+            it:function (){
+                axios.post(
+    "/spring_mvv/ajax/text?id=1001",
+        {username:"admin",password:"123456"}
+    ).then(response=>{
+        console.log(response.data);
+    })
+            },
+            jso(){
+                axios.post(
+                    "/spring_mvv/ajaxJSON/text?id=1001",
+                    {username:"admin",password:"123456"}
+                ).then(response=>{
+                    console.log(response.data);
+                    // this.it=response.data.username
+                })
+            },
+            xiang(){
+                axios.post(
+                    "/spring_mvv/ajaxJSON/XY?id=1001"
+                ).then(response=>{
+                     console.log(response.data);
+                     this.it=response.data.username
+                })
+            },
+            map(){
+                axios.post(
+                    "/spring_mvv/ajaxJSON/map?id=1001"
+                ).then(response=>{
+                    console.log(response.data);
+                    this.he=response.data.cc
+                })
+            }
+        }
+    })
+    // $(function () {
+    //     $("#cc").click(function () {
+    //          axios.post(
+    //              "/spring_mvv/ajax/text?id=1001",
+    //              {username:"admin",password:"123456"}
+    //          ).then(response=>{
+    //              console.log(response.data);
+    //          })
+    //     })
+    // })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhx.mapper.dynamicmapper">
+<!-- List<emp> getempanddynamic(emp emp);-->
+    <resultMap id="empmap" type="emp">
+        <id property="empid" column="emp_id"></id>
+        <result column="emp_name" property="empname"></result>
+    </resultMap>
+<!--   1  if:通过text中的表达式判断标签中的内容是否有效（拼接）
+       2 where:有条件成立自动生成where
+       可以将多余的and去掉
+       没有条件成立就不会生成where
+       3 choose，when ，otherwise相当于if。。。elseif。。。else
+       5 foreach:
+       collection:设置循环的数组或集合
+       item: 用个字符表示数组或集合里的每一个数据
+       separator:分隔符
+       open:循环开始的字符  close 结束
+-->
+<select id="getempanddynamic" resultMap="empmap">
+    select * from emp
+    <where>
+        <if test="empname !=null and empname !=''">
+            emp_name=#{empname}
+        </if>
+        <if test="age !=null and age !=''">
+          and age=#{age}
+        </if>
+        <if test="gender !=null and gender !=''">
+           and gender=#{gender}
+        </if>
+    </where>
+</select>
+
+<!-- 2 //批量添加
+    void getadds(@Param("adds") List<emp> emps);-->
+    <insert id="getadds">
+        insert into t_emp values
+        <foreach collection="adds" item="emp" separator=",">
+            (null,#{emp.empname},#{emp.age},#{emp.gender},null)
+        </foreach>
+    </insert>
+<!--  //批量删除
+    void getdeletes(@Param("deletes") Integer[]emps);-->
+    <delete id="getdeletes">
+        delete from emp where
+        <foreach collection="deletes" item="emp" separator="or">
+            emp_id=#{emp}
+        </foreach>
+    </delete>
+</mapper>

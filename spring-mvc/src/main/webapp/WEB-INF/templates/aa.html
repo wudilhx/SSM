@@ -1,0 +1,18 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--获取域中的内容，如果是对象${cc.属性}   +可以在后面写内容-->
+<div th:text="${cc}"></div>
+<div th:if="true">如果为true就显示这标签</div>
+<div th:if="${cc.aa==0}">如果为true就显示这标签</div>
+<!--判断${cc}的值-->
+<a th:switch="${cc}">
+    <p th:case="0">可见</p>
+    <p th:case="1">隐藏</p>
+</a>
+</body>
+</html>

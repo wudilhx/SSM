@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc-helloword" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvv-ajax" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/mybaties-resultMap/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_dynamicSQL/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_mbg/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_helloword/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-proxy/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-aod/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-SHW/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mvc-helloword/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mvv-ajax/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mybaties-resultMap/text/pom.xml" />
+        <option value="$PROJECT_DIR$/mybaties-resultMap/untitled/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

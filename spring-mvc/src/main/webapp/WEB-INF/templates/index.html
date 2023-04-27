@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<h1>index.html</h1>
+<!--自动补齐工程名-->
+<a th:href="@{/hello}">spring</a><br>
+<form th:action="@{/hello}" method="post">
+    <input type="submit" value="按钮"><br>
+</form>
+<br>
+<a th:href="@{/hello?username=admin&password=123}">开关1</a><br>
+<a th:href="@{/hello(username='admin')+password=123}">开关2</a>
+<br>
+<a href="/spring_mvc/hello">开关三</a><br>
+<a href="/spring_mvc/hello/text/1/admin">占位符</a><br>
+<a th:href="@{/hello/text/1/admin}">占位符2</a>
+<hr>
+<form th:action="@{/user/pojo}" method="post">
+    用户名:<input type="text" name="username"><br>
+     密码:<input type="password" name="password"><br>
+    <input type="submit" value="登录">
+</form>
+<hr>
+<a th:href="@{/text/mav}">通过ModeAndView向请求域获取对象</a><br>
+<a th:href="@{/text/model}">通过Mode向请求域获取对象</a><br>
+<a th:href="@{/text/modelmap}">通过ModeMap向请求域获取对象</a><br>
+<a th:href="@{/text/session}">测试向会话域共享数据</a><br>
+<a th:href="@{/text/application}">测试向应用域共享数据</a><br>
+<hr>
+<a th:href="@{/text/thymeleaf}">测试springmvc视图ThymeleafView(转发)</a><br>
+<a th:href="@{/text/forward}">测试springmvc视图InternalResourceView(转发)</a><br>
+<a th:href="@{/text/redirect}">测试springmvc视图RedirectView(重定向)</a>
+<hr>
+<a th:href="@{/user}">查询所有的用户信息</a><br>
+<a th:href="@{/user/1}">根据id查询用户信息</a><br>
+
+<form th:action="@{/user/1}" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="修改">
+    <hr>
+    <a></a>
+</form>
+</body>
+</html>

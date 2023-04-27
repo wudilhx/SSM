@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+  <context:component-scan base-package="com.lhx">
+<!--      不扫描controller-->
+      <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+  </context:component-scan>
+    <!--   引入jdbc配置文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+<!--    配置数据源-->
+    <bean id="dataSore" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="driverClassName" value="${jdbc.duver}"></property>
+        <property name="username" value="${jdbc.name}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--       连接数据源-->
+        <property name="dataSource" ref="dataSore"></property>
+    </bean>
+    <!--  开启事务的注解驱动 tx -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+<!--    配置SqlSessionFactoryBean 可以直接在spring中ioc里获取SqlSessionFactoryBean-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+<!--        设置mybaties的核心配置路径-->
+        <property name="configLocation" value="classpath:mybaties-config.xml"></property>
+<!--    设置数据源-->
+        <property name="dataSource" ref="dataSore"></property>
+<!--        设置类型别名所对应的包-->
+        <property name="typeAliasesPackage" value="com.lhx.pojo"></property>
+    </bean>
+    <!--
+       配置mapper接口的扫描，可以将指定包下所有的mapper接口
+       通过SqlSession创建代理实现类对象，并将这些对象交给IOC容器管理
+   -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lhx.mapper"></property>
+    </bean>
+</beans>

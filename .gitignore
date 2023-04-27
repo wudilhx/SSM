@@ -1,0 +1,13 @@
+# Project exclude paths
+/mybaties-resultMap/target/
+/mybatis/target/
+/mybatis_dynamicSQL/target/
+/mybatis_mbg/target/
+/spring-aod/target/
+/spring-mvc/target/
+/spring-mvc-helloword/target/
+/spring-mvv-ajax/target/
+/spring-proxy/target/
+/spring-SHW/target/
+/spring_helloword/target/
+/ssm/target/
